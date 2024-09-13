@@ -1,17 +1,18 @@
 import pygame
 class Tile:
-    def __init__(self, color, isBreakable, hasCollision):
-        self.color = color
+    def __init__(self, image, isBreakable, hasCollision):
+        self.image = pygame.image.load(image)
         self.isBreakable = isBreakable
         self.hasCollision = hasCollision
 
     def render(self, screen, x, y):
-        pygame.draw.rect(screen, self.color, pygame.Rect(x*64, y*64, (x+1)*64, (y+1)*64))
+        #pygame.draw.rect(screen, self.color, pygame.Rect(x*64, y*64, (x+1)*64, (y+1)*64))
+        screen.blit(self.image, (x*64, y*64))
 
 class TileBorder(Tile):
     def __init__(self):
-        Tile.__init__(self,(111,14,65),False,True)
+        Tile.__init__(self,"brick.png",False,True)
 
 class TileGrass(Tile):
     def __init__(self):
-        Tile.__init__(self,(0,255,0),False,False)
+        Tile.__init__(self,"grass.png",False,False)
