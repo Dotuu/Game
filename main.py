@@ -1,5 +1,7 @@
 import pygame
 
+import DrawMap
+
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
@@ -18,7 +20,8 @@ while running:
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("gray")
-    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, 1280, 720))
+    #pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, 1280, 720))
+    DrawMap.renderMap(screen)
 
     pygame.draw.circle(screen, "red", player_pos, 40)
 

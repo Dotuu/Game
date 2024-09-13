@@ -2,8 +2,8 @@ import pygame
 
 import Tiles
 
-border = Tiles.TileBorder("path", False, True)
-grass = Tiles.TileGrass("path", False, False)
+border = Tiles.TileBorder()
+grass = Tiles.TileGrass()
 
 map=[
 [border,border,border,border,border,border,border,border,border,border],
@@ -17,3 +17,9 @@ map=[
 [border,grass,grass,grass,grass,grass,grass,grass,grass,border],
 [border,border,border,border,border,border,border,border,border,border],
 ]
+
+def renderMap(screen):
+    for y in range(len(map)):
+        for x in range(len(map[y])):
+            tile = map[y][x]
+            tile.render(screen,x,y)
