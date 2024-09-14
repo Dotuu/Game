@@ -1,13 +1,19 @@
 import pygame
 import DrawMap
+import JsonLoader
+from Player import Player
+
 
 class Game:
     def __init__(self):
-        self.screen = pygame.display.set_mode((1280, 720))
+        self.settings = JsonLoader.load("settings.json")
+        print(self.settings)
+        self.screen = pygame.display.set_mode((self.settings["resolution"]["width"], self.settings["resolution"]["height"]))
         self.clock = pygame.time.Clock()
         self.delta_time = 0
         self.running = False
         self.player_pos = pygame.Vector2(self.screen.get_width() / 2, self.screen.get_height() / 2)
+        self.player = Player()
 
     def start(self):
         pygame.init()
@@ -40,7 +46,7 @@ class Game:
     def render(self):
         self.screen.fill("gray")
         DrawMap.renderMap(self.screen)
-        pygame.draw.circle(self.screen, "red", self.player_pos, 40)
+        self.player.render(self.screen,self.player_pos.x,self.player_pos.y)
         pygame.display.flip()
 
     def quit(self):
