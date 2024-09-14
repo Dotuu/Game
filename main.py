@@ -12,8 +12,8 @@ class Game:
         self.clock = pygame.time.Clock()
         self.delta_time = 0
         self.running = False
-        self.player_pos = pygame.Vector2(self.screen.get_width() / 2, self.screen.get_height() / 2)
-        self.player = Player()
+        self.player = Player(self.screen.get_width() / 2, self.screen.get_height() / 2)
+        print((self.screen.get_width() / 2, self.screen.get_height() / 2))
 
     def start(self):
         pygame.init()
@@ -34,19 +34,21 @@ class Game:
 
     def update(self):
         keys = pygame.key.get_pressed()
+        distance = [0, 0]
         if keys[pygame.K_w]:
-            self.player_pos.y -= 300 * self.delta_time
+            distance[1] = -self.delta_time
         if keys[pygame.K_s]:
-            self.player_pos.y += 300 * self.delta_time
+            distance[1] = +self.delta_time
         if keys[pygame.K_a]:
-            self.player_pos.x -= 300 * self.delta_time
+            distance[0] = -self.delta_time
         if keys[pygame.K_d]:
-            self.player_pos.x += 300 * self.delta_time
+            distance[0] = +self.delta_time
+        self.player.move(distance[0], distance[1])
 
     def render(self):
         self.screen.fill("gray")
         DrawMap.renderMap(self.screen)
-        self.player.render(self.screen,self.player_pos.x,self.player_pos.y)
+        self.player.render(self.screen)
         pygame.display.flip()
 
     def quit(self):
