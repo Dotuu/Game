@@ -17,7 +17,7 @@ class Player:
         self.hunger = stats["hunger"]
         self.mana = stats["mana"]
         self.stamina = stats["stamina"]
-        self.image = pygame.image.load("player.png")
+        self.image = pygame.image.load("assets/player.png")
         self.x = x
         self.y = y
         self.speed = 300

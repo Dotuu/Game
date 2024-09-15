@@ -11,8 +11,8 @@ class Tile:
 
 class TileBorder(Tile):
     def __init__(self):
-        Tile.__init__(self,"brick.png",False,True)
+        Tile.__init__(self,"assets/brick.png",False,True)
 
 class TileGrass(Tile):
     def __init__(self):
-        Tile.__init__(self,"grass.png",False,False)
+        Tile.__init__(self,"assets/grass.png",False,False)
