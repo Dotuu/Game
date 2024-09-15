@@ -1,7 +1,7 @@
 import pygame
 import DrawMap
 import JsonLoader
-from Player import Player
+from entity.Player import Player
 
 class Game:
     def __init__(self):

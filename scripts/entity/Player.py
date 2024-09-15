@@ -1,8 +1,5 @@
-import json
-
 import pygame
-
-import JsonLoader
+from entity.BaseEntity import BaseEntity
 
 stats = {
     "health": "100",
@@ -11,16 +8,13 @@ stats = {
     "hunger": "100",
 }
 
-class Player:
+class Player(BaseEntity):
     def __init__(self, x, y):
+        BaseEntity.__init__(self, x, y, "assets/player.png", (), "player", 300)
         self.health = stats["health"]
         self.hunger = stats["hunger"]
         self.mana = stats["mana"]
         self.stamina = stats["stamina"]
-        self.image = pygame.image.load("assets/player.png")
-        self.x = x
-        self.y = y
-        self.speed = 300
 
     def printstats(self):
         print(self.health, self.hunger, self.mana, self.stamina)
@@ -29,11 +23,3 @@ class Player:
         for x in stats:
             if stat == x:
                 stats[x] = value
-
-    def render(self,screen):
-        screen.blit(self.image, ((self.x-64)/2,(self.y-64)/2))
-
-    def move(self, distanceX, distanceY):
-        # move
-        self.x += self.speed * distanceX
-        self.y += self.speed * distanceY
