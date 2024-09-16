@@ -35,20 +35,10 @@ class Game:
             self.running = False
 
     def update(self):
-        keys = pygame.key.get_pressed()
-        distance = [0, 0]
-        if keys[pygame.K_w]:
-            distance[1] = -self.delta_time
-        if keys[pygame.K_s]:
-            distance[1] = +self.delta_time
-        if keys[pygame.K_a]:
-            distance[0] = -self.delta_time
-        if keys[pygame.K_d]:
-            distance[0] = +self.delta_time
-        self.player.move(distance[0], distance[1])
+        self.player.update()
 
     def render(self):
-        self.screen.fill("gray")
+        self.screen.fill("black")
         DrawMap.renderMap(self.screen)
         self.player.render(self.screen)
         pygame.display.flip()

@@ -17,6 +17,19 @@ class Player(BaseEntity):
         self.mana = stats["mana"]
         self.stamina = stats["stamina"]
 
+    def update(self):
+        keys = pygame.key.get_pressed()
+        distance = [0, 0]
+        if keys[pygame.K_w]:
+            distance[1] = -self.delta_time
+        if keys[pygame.K_s]:
+            distance[1] = +self.delta_time
+        if keys[pygame.K_a]:
+            distance[0] = -self.delta_time
+        if keys[pygame.K_d]:
+            distance[0] = +self.delta_time
+        self.move(distance[0], distance[1])
+
     def printstats(self):
         print(self.health, self.hunger, self.mana, self.stamina)
 
