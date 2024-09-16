@@ -1,21 +1,18 @@
 import pygame
 
-from scripts import DrawMap, JsonLoader
-from scripts.entity.Player import Player
+from scripts import JsonLoader
+from scripts.scene.TestScene import TestScene
 
 
 class Game:
     def __init__(self):
         self.settings = JsonLoader.load("settings.json")
-        print(self.settings)
         self.screen = pygame.display.set_mode(
             (self.settings["resolution"]["width"], self.settings["resolution"]["height"]))
         self.clock = pygame.time.Clock()
         self.delta_time = 0
         self.running = False
-        self.player = Player(self.screen.get_width() / 2,
-                             self.screen.get_height() / 2)
-        print((self.screen.get_width() / 2, self.screen.get_height() / 2))
+        self.scenes = [TestScene(self.screen)]
 
     def start(self):
         pygame.init()
@@ -35,12 +32,13 @@ class Game:
             self.running = False
 
     def update(self):
-        self.player.update(self.delta_time)
+        for scene in self.scenes:
+            scene.update(self.delta_time)
 
     def render(self):
         self.screen.fill("black")
-        DrawMap.renderMap(self.screen)
-        self.player.render(self.screen)
+        for scene in self.scenes:
+            scene.render(self.screen)
         pygame.display.flip()
 
     def quit(self):

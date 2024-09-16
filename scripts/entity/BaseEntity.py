@@ -14,7 +14,7 @@ class BaseEntity:
         pass
 
     def render(self, screen):
-        screen.blit(self.sprite, ((self.x - 64) / 2, (self.y - 64) / 2))
+        screen.blit(self.sprite, (self.x - (64 / 2), self.y - (64 / 2)))
 
     def move(self, distanceX, distanceY):
         self.x += self.speed * distanceX

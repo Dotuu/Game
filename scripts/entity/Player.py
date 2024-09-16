@@ -11,7 +11,8 @@ stats = {
 
 class Player(BaseEntity):
     def __init__(self, x, y):
-        BaseEntity.__init__(self, x, y, "assets/player.png", (), "player", 300)
+        BaseEntity.__init__(self, x, y, "assets/player.png",
+                            (24, 32), "player", 300)
         self.health = stats["health"]
         self.hunger = stats["hunger"]
         self.mana = stats["mana"]
