@@ -1,5 +1,5 @@
 import pygame
-from entity.BaseEntity import BaseEntity
+from scripts.entity.BaseEntity import BaseEntity
 
 stats = {
     "health": "100",
@@ -17,17 +17,17 @@ class Player(BaseEntity):
         self.mana = stats["mana"]
         self.stamina = stats["stamina"]
 
-    def update(self):
+    def update(self, delta_time):
         keys = pygame.key.get_pressed()
         distance = [0, 0]
         if keys[pygame.K_w]:
-            distance[1] = -self.delta_time
+            distance[1] = -delta_time
         if keys[pygame.K_s]:
-            distance[1] = +self.delta_time
+            distance[1] = +delta_time
         if keys[pygame.K_a]:
-            distance[0] = -self.delta_time
+            distance[0] = -delta_time
         if keys[pygame.K_d]:
-            distance[0] = +self.delta_time
+            distance[0] = +delta_time
         self.move(distance[0], distance[1])
 
     def printstats(self):

@@ -1,6 +1,6 @@
 import pygame
 
-import Tiles
+from scripts import Tiles
 
 border = Tiles.TileBorder()
 grass = Tiles.TileGrass()

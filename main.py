@@ -1,7 +1,7 @@
 import pygame
-import DrawMap
-import JsonLoader
-from entity.Player import Player
+
+from scripts import DrawMap, JsonLoader
+from scripts.entity.Player import Player
 
 
 class Game:
@@ -35,7 +35,7 @@ class Game:
             self.running = False
 
     def update(self):
-        self.player.update()
+        self.player.update(self.delta_time)
 
     def render(self):
         self.screen.fill("black")
